@@ -18,6 +18,9 @@ public class Main {
             int num1 = input.nextInt();
             System.out.print("두번째 숫자를 입력해주세요: ");
             int num2 = input.nextInt();
+            Calculator calculator = new Calculator();
+            // calculator.setNum1(num1);
+            // calculator.setNum2(num2);
             if(num1 < 0 || num2 < 0){
                 System.out.println("0을 포함한 양의 정수만 입력하세요!");
                 continue;
@@ -31,22 +34,20 @@ public class Main {
 
             switch (oper) {
                 case '+':
-                    result = num1 + num2;
-                    System.out.println("결과: " + result);
+                    result = calculator.sum();
                     break;
                 case '-':
-                    result = num1 - num2;
-                    System.out.println("결과: " + result);
+                    result = calculator.subtract();
                     break;
                 case '*':
-                    result = num1 * num2;
-                    System.out.println("결과: " + result);
+                    result = calculator.multiply();
                     break;
                 case '/':
-                    try{
-                        result = num1 / num2;
-                        System.out.println("결과: " + result);
-                    }catch(ArithmeticException e){
+                    //연산 오류가 발생할 경우 해당 오류에 대한 내용을 정제하여 출력
+                    //ex) “나눗셈 연산에서 분모(두번째 정수)에 0이 입력될 수 없습니다.“
+                    try {
+                        result = calculator.division();
+                    } catch (ArithmeticException e) {
                         System.out.println("나눗셈 연산에서 두번째 정수에 0을 입력할 수 없습니다.");
                     }
                     break;
@@ -64,3 +65,4 @@ public class Main {
         }
     }
 }
+
