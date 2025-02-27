@@ -1,6 +1,7 @@
+import calculator.Calculator;
+
 import java.util.Scanner;
 
-import static java.lang.System.exit;
 
 public class Main {
 
@@ -17,29 +18,35 @@ public class Main {
             int num1 = input.nextInt();
             System.out.print("두번째 숫자를 입력해주세요: ");
             int num2 = input.nextInt();
+            if(num1 < 0 || num2 < 0){
+                System.out.println("0을 포함한 양의 정수만 입력하세요!");
+                continue;
+            }
             System.out.print("사칙연산 기호(+, -, *, /)를 입력하세요: ");
             String operator = input.next();
             //버퍼 비우기
             input.nextLine();
-            char op = operator.charAt(0);
+            char oper = operator.charAt(0);
             int result = 0;
 
-            switch (op) {
+            switch (oper) {
                 case '+':
                     result = num1 + num2;
+                    System.out.println("결과: " + result);
                     break;
                 case '-':
                     result = num1 - num2;
+                    System.out.println("결과: " + result);
                     break;
                 case '*':
                     result = num1 * num2;
+                    System.out.println("결과: " + result);
                     break;
                 case '/':
-                    //연산 오류가 발생할 경우 해당 오류에 대한 내용을 정제하여 출력
-                    //ex) “나눗셈 연산에서 분모(두번째 정수)에 0이 입력될 수 없습니다.“
-                    try {
+                    try{
                         result = num1 / num2;
-                    } catch (ArithmeticException e) {
+                        System.out.println("결과: " + result);
+                    }catch(ArithmeticException e){
                         System.out.println("나눗셈 연산에서 두번째 정수에 0을 입력할 수 없습니다.");
                     }
                     break;
