@@ -36,6 +36,7 @@ public class Calculator {
         return result;
     }
 
+
     // list의 getter, setter
 
     public void setList(int result){
