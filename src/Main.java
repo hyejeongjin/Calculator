@@ -19,8 +19,10 @@ public class Main {
             System.out.print("두번째 숫자를 입력해주세요: ");
             int num2 = input.nextInt();
             Calculator calculator = new Calculator();
-            // calculator.setNum1(num1);
-            // calculator.setNum2(num2);
+
+            // setter로 calculator 클래스에 값 넘기기.
+            calculator.setNum1(num1);
+            calculator.setNum2(num2);
             if(num1 < 0 || num2 < 0){
                 System.out.println("0을 포함한 양의 정수만 입력하세요!");
                 continue;
