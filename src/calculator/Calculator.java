@@ -8,7 +8,8 @@ public class Calculator {
     int num2;
     int result;
 
-    ArrayList<Integer> resultList = new ArrayList<Integer>();
+    // 결과 값을 담을 list
+    ArrayList<Integer> list = new ArrayList<Integer>();
 
    public void setNum1(int num1){
         this.num1 = num1;
@@ -19,23 +20,30 @@ public class Calculator {
     }
 
     public int sum() {
-        result = this.num1 + this.num2;
-        resultList.add(result);
+        result = num1 + num2;
         return result;
     }
-    public int subtract(){
-        result = this.num1 - this.num2;
-        resultList.add(result);
+    public int subtract(int num1, int num2){
+        result = num1 - num2;
         return result;
     }
-    public int multiply(){
-        result = this.num1 * this.num2;
-        resultList.add(result);
+    public int multiply(int num1, int num2){
+        result = num1 * num2;
         return result;
     }
-    public int division(){
-        result = this.num1 / this.num2;
-        resultList.add(result);
+    public int division(int num1, int num2){
+        result = num1 / num2;
         return result;
     }
+
+    // list의 getter, setter
+
+    public void setList(int result){
+        this.list.add(result);
+    }
+
+    public ArrayList<Integer> getList(){
+        return this.list;
+    }
+
 }
