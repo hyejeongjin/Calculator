@@ -24,7 +24,7 @@ public class Main {
             // setter로 calculator 클래스에 값 넘기기.
             calculator.setNum1(num1);
             calculator.setNum2(num2);
-            if(num1 < 0 || num2 < 0){
+            if (num1 < 0 || num2 < 0) {
                 System.out.println("0을 포함한 양의 정수만 입력하세요!");
                 continue;
             }
@@ -41,33 +41,32 @@ public class Main {
                     calculator.setList(result);
                     break;
                 case '-':
-                    result = calculator.subtract(num1, num2);
+                    result = calculator.subtract();
                     calculator.setList(result);
                     break;
                 case '*':
-                    result = calculator.multiply(num1, num2);
+                    result = calculator.multiply();
                     calculator.setList(result);
                     break;
                 case '/':
-                    //연산 오류가 발생할 경우 해당 오류에 대한 내용을 정제하여 출력
-                    //ex) “나눗셈 연산에서 분모(두번째 정수)에 0이 입력될 수 없습니다.“
-                    try {
-                        result = calculator.division(num1, num2);
-                        calculator.setList(result);
-                    } catch (ArithmeticException e) {
-                        System.out.println("나눗셈 연산에서 두번째 정수에 0을 입력할 수 없습니다.");
-                    }
+                    // try~catch 문 Calculator 클래스로 이동.
+                    result = calculator.division();
                     break;
                 default:
                     System.out.println("잘못된 연산자를 입력하셨습니다!");
             }
             System.out.println("결과: " + result);
-            System.out.println("저장된 계산값: " + calculator.getList());
+            System.out.println("저장된 계산결과: " + calculator.getList());
             //계속 계산할건지 체크
             System.out.println("더 계산하시겠습니까? (exit 입력 시 종료)");
             String answer = input.nextLine();
-            if(answer.equals("exit")){
+            if (answer.equals("exit")) {
                 System.exit(0);
+            }
+            System.out.println("계산한 값을 지우시겠습니까? yes 입력 시 가장 먼저 저장된 데이터가 삭제됩니다.");
+            String erase = input.nextLine();
+            if(erase.equals("yes")){
+                calculator.removeList();
             }
         }
     }
