@@ -22,12 +22,14 @@ public class Main {
             int num2 = input.nextInt();
 
             // setter로 calculator 클래스에 값 넘기기.
+            // calculator 클래스에서 0을 포함한 정수 체크
             calculator.setNum1(num1);
             calculator.setNum2(num2);
-            if (num1 < 0 || num2 < 0) {
+            if (!calculator.isNum()) {
                 System.out.println("0을 포함한 양의 정수만 입력하세요!");
                 continue;
             }
+
             System.out.print("사칙연산 기호(+, -, *, /)를 입력하세요: ");
             String operator = input.next();
             //버퍼 비우기
@@ -67,6 +69,7 @@ public class Main {
             String erase = input.nextLine();
             if(erase.equals("yes")){
                 calculator.removeList();
+                System.out.println("삭제 후 저장된 결과: " + calculator.getList());
             }
         }
     }
