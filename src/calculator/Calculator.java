@@ -10,7 +10,8 @@ public class Calculator{
 
     // 결과 값을 담을 list
     // 캡슐화
-    // 인텔리제이는 왜 final을 추천할까? -> 불변객체?
+    // 인텔리제이는 왜 final을 추천할까? -> 불변객체
+    // 불변객체 선언 : 값을 함부로 변경할 수 없도록.
     private final ArrayList<Integer> list = new ArrayList<Integer>();
 
    public void setNum1(int num1){
@@ -31,6 +32,8 @@ public class Calculator{
     }
 
     // list의 getter, setter
+    // list가 불변객ㅊ체로 설정되어있지만
+    // 값 변경 및 재초기화한 것이 아니기 때문에 setter 사용 가능!!
     public void setList(int result){
         this.list.add(result);
     }

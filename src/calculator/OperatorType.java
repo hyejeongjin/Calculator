@@ -2,7 +2,7 @@ package calculator;
 
 public enum OperatorType {
 
-
+    //상수 설정 및 조건
     PLUS('+'){
         public int apply(int num1, int num2){
             return num1 + num2;
@@ -32,6 +32,7 @@ public enum OperatorType {
 
     private final char oper;
 
+
     public static OperatorType getOperate(char operate) {
 
         if(OperatorType.PLUS.oper == operate){
@@ -47,6 +48,8 @@ public enum OperatorType {
         }
 
     }
+
+    //추상 메서드
     public abstract int apply(int num1, int num2);
 
 }
