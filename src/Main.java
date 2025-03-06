@@ -1,7 +1,8 @@
 import calculator.Calculator;
+import calculator.OperatorType;
 
-import java.util.ArrayList;
 import java.util.Scanner;
+
 
 
 public class Main {
@@ -12,6 +13,7 @@ public class Main {
         // 반복문 실행 시에 초기화되는 일을 막기 위해 반복문 밖에 작성.
         Calculator calculator = new Calculator();
         Scanner input = new Scanner(System.in);
+
 
         while (true) {
             // Lv 1. 클래스 없이 기본적인 연산을 수행할 수 있는 계산기 만들기
@@ -34,25 +36,32 @@ public class Main {
             String operator = input.next();
             //버퍼 비우기
             input.nextLine();
-            char oper = operator.charAt(0);
+            char op = operator.charAt(0);
+            OperatorType operType = OperatorType.getOperate(op);
             int result = 0;
 
-            switch (oper) {
-                case '+':
-                    result = calculator.sum();
+            switch (operType) {
+                case PLUS:
+                    result = OperatorType.PLUS.apply(num1, num2);
                     calculator.setList(result);
                     break;
-                case '-':
-                    result = calculator.subtract();
+                case MINUS:
+                    result = OperatorType.MINUS.apply(num1, num2);
                     calculator.setList(result);
                     break;
-                case '*':
-                    result = calculator.multiply();
+                case MUL:
+                    result = OperatorType.MUL.apply(num1, num2);
                     calculator.setList(result);
                     break;
-                case '/':
-                    // try~catch 문 Calculator 클래스로 이동.
-                    result = calculator.division();
+                case DIV:
+                    // enum 사용으로 인해 try ~ catch 문 다시 복구.
+                    try{
+                        result = OperatorType.DIV.apply(num1, num2);
+                        // 계산이 될 경우에만 list에 값 저장.
+                        calculator.setList(result);
+                    }catch (ArithmeticException e){
+                        System.out.println("나눗셈 연산에서 두번째 정수에 0을 입력할 수 없습니다.");
+                    }
                     break;
                 default:
                     System.out.println("잘못된 연산자를 입력하셨습니다!");

@@ -3,7 +3,7 @@ package calculator;
 
 import java.util.ArrayList;
 
-public class Calculator {
+public class Calculator{
     int num1;
     int num2;
     int result;
@@ -28,29 +28,6 @@ public class Calculator {
            return false;
        }
        return true;
-    }
-
-    public int sum() {
-        result = this.num1 + this.num2;
-        return result;
-    }
-    public int subtract(){
-        result = this.num1 - this.num2;
-        return result;
-    }
-    public int multiply(){
-        result = this.num1 * this.num2;
-        return result;
-    }
-    public int division(){
-        try{
-            result = this.num1 / this.num2;
-            // 계산이 될 경우에만 list에 값 저장.
-            setList(result);
-        }catch (ArithmeticException e){
-            System.out.println("나눗셈 연산에서 두번째 정수에 0을 입력할 수 없습니다.");
-        }
-        return result;
     }
 
     // list의 getter, setter
