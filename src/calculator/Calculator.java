@@ -32,7 +32,7 @@ public class Calculator{
     }
 
     // list의 getter, setter
-    // list가 불변객ㅊ체로 설정되어있지만
+    // list가 불변객체로 설정되어있지만
     // 값 변경 및 재초기화한 것이 아니기 때문에 setter 사용 가능!!
     public void setList(int result){
         this.list.add(result);
